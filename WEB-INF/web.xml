@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<web-app>
+	<display-name>Healthery Collection</display-name>
+	<description>Sample App</description>
+	<servlet>
+		<servlet-name>Beverage</servlet-name>
+		<servlet-class>BeverageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Beverage</servlet-name>
+		<url-pattern>/beverage</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>Product</servlet-name>
+		<servlet-class>ProductServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Product</servlet-name>
+		<url-pattern>/product</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>Customer</servlet-name>
+		<servlet-class>CustomerServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Customer</servlet-name>
+		<url-pattern>/customer</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>MyCart</servlet-name>
+		<servlet-class>MyCartServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MyCart</servlet-name>
+		<url-pattern>/mycart</url-pattern>
+	</servlet-mapping>
+		<servlet>
+		<servlet-name>Delivery</servlet-name>
+		<servlet-class>DelivererServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Delivery</servlet-name>
+		<url-pattern>/deliver</url-pattern>
+	</servlet-mapping>
+</web-app>

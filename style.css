@@ -1,0 +1,105 @@
+/* *{
+	border:2px solid green;
+} */
+body {
+	margin:0px;
+	background-color:rgb(56, 56, 56);
+}
+span {
+	font-size:25px;
+}
+#header {
+	border-bottom:2px solid rgb(134, 121, 0);
+	width:100%; height: 62px; 
+	position: fixed;
+	top: 0px;
+	background-color:rgb(39, 38, 38);
+}
+#header > h1 {
+	margin:16px 0 0 15px; color: white; font: bold 32px arial;
+	position:fixed;
+}
+#bodyLeft {
+	float:left;
+	width:73%;
+	height:100%;
+	background-color:rgba(39, 38, 38, 0.5);
+}
+#headChoice {
+	font-size:30px;
+	margin: 15px 0px 0px 15px;
+	color:white;
+	font-weight:10px;
+	float:left;
+}
+.btnChoice{
+	float:left;
+}
+#item {
+	margin-top:8%;
+	width:100%;
+	height:10%;
+	background-color:rgb(209, 188, 0);
+	float:left;
+}
+#sidebarRight {
+	width:25%;
+	height:100%;
+	background-color:rgba(39, 38, 38, 0.5);
+	top:66px;
+	bottom:52px;
+	float:right;
+}
+#navigator {
+	float:right;
+	padding:20px;
+	padding-right:80px;
+}
+a {
+	padding:10px 10px 20px;
+	text-decoration:none;
+	font-size:18px;
+	color:rgb(209, 188, 0);
+}	
+#navigator a:hover {
+	border-bottom-style: solid;
+	color:rgb(255, 230, 0);
+}
+#sideBarButton{
+	background-color:rgba(39, 38, 38, 0.5);
+	margin-top:23.5%;
+	width:100%;
+	height:10%;
+	background-color:rgb(209, 188, 0);
+	Color:white;
+}
+#sideBarButton h2 {
+	padding:17px;
+}
+
+a.button {
+	width: 150px;
+	display: inline-block;
+	background: linear-gradient(to bottom, #a16f02, #e7ad2e);
+	border-radius: 8px ; border: 1px solid #44444444;
+	box-shadow: 0px 1px 1px #7090e688 inset, 1px 1px 3px #22222222;
+	color: #6d954e; text-decoration: none;
+	text-align: center;
+	padding: 17px 32px 17px 32px;
+	margin:15px;
+	text-shadow: 0px 1px 1px rgba(255,255,255,0.4);
+	font-family:arial;
+}
+a.button:hover {
+	background: rgb(230, 226, 32);
+	color:white;
+}
+a.button:active {
+	background: rgb(209, 188, 0);
+}
+#title{
+	font-weight:bold;
+	font-size:18px;
+	float:right;
+	margin-right:39%;
+}
