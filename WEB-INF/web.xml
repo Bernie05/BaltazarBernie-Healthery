@@ -3,6 +3,15 @@
 	<display-name>Healthery Collection</display-name>
 	<description>Sample App</description>
 	<servlet>
+		<servlet-name>All Product</servlet-name>
+		<servlet-class>AllProductServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>All Product</servlet-name>
+		<url-pattern>/allproduct</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>Beverage</servlet-name>
 		<servlet-class>BeverageServlet</servlet-class>
 	</servlet>
@@ -11,12 +20,12 @@
 		<url-pattern>/beverage</url-pattern>
 	</servlet-mapping>
 	<servlet>
-		<servlet-name>Product</servlet-name>
-		<servlet-class>ProductServlet</servlet-class>
+		<servlet-name>Food</servlet-name>
+		<servlet-class>FoodServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>Product</servlet-name>
-		<url-pattern>/product</url-pattern>
+		<servlet-name>Food</servlet-name>
+		<url-pattern>/food</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>Customer</servlet-name>

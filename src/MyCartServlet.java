@@ -26,7 +26,6 @@ public class MyCartServlet extends HttpServlet
 		sb.append("<MyCartList>");
 		for(MyCart mc : bc.getAllCart()) {
 			sb.append("<Cart>");
-			sb.append("<CartID>" + mc.getCARTID() + "</CartID>");
 			sb.append("<CustomerCart>" + mc.getCustomerCart() + "</CustomerCart>");
 			sb.append("<Code>" + mc.getItemCode() + "</Code>");
 			sb.append("<Name>" + mc.getItemName() + "</Name>");

@@ -7,11 +7,11 @@ import java.lang.StringBuilder;
 public class BeverageServlet extends HttpServlet
 {
 	HealtheryDatabaseManager hdm;
-	BeverageCollection bc;
+	ItemCollection bc;
 
 	public void init() throws ServletException {
 		hdm = HealtheryDatabaseManager.instance();
-		bc = hdm.getMyBeverageCollection();
+		bc = hdm.getItemCollection();
 	}
 
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws
@@ -24,19 +24,20 @@ public class BeverageServlet extends HttpServlet
 	public void BeverageDisplay(PrintWriter out) {
 		StringBuilder sb = new StringBuilder("");
 		sb.append("<BeverageList>");
-		for(Beverage b : bc.getAllBeverages()) {
-			sb.append("<Beverage>");
-			sb.append("<ItemCode>" + b.getItemCode() + "</ItemCode>");
-			sb.append("<Picture>" + b.getPicture() + "</Picture>");
-			sb.append("<Name>" + b.getName() + "</Name>");
-			sb.append("<Quantity>" + b.getQuantity() + "</Quantity>");
-			sb.append("<Description>" + b.getDescription() + "</Description>");
-			sb.append("<HealthBenefits>" + b.getHealthBenefits() + "</HealthBenefits>");
-			sb.append("<Price>" + b.getPrice() + "</Price>");
-			sb.append("<OrderCustomerID>" + b.getOrderCustomerID() + "</OrderCustomerID>");
-			sb.append("<DeliverID>" + b.getDeliverID() + "</DeliverID>");
-			sb.append("<Type>" + b.getType() + "</Type>");
-			sb.append("</Beverage>");
+		for(Items i : bc.getAllItems()) {
+			if(i instanceof Beverage) {
+				Beverage bvg = (Beverage)i;
+				sb.append("<Beverage>");
+				sb.append("<ItemCode>" + bvg.getItemCode() + "</ItemCode>");
+				sb.append("<Picture>" + bvg.getPicture() + "</Picture>");
+				sb.append("<Name>" + bvg.getName() + "</Name>");
+				sb.append("<Quantity>" + bvg.getQuantity() + "</Quantity>");
+				sb.append("<Description>" + bvg.getDescription() + "</Description>");
+				sb.append("<HealthBenefits>" + bvg.getHealthBenefits() + "</HealthBenefits>");
+				sb.append("<Price>" + bvg.getPrice() + "</Price>");
+				sb.append("<Type>" + bvg.getType() + "</Type>");
+				sb.append("</Beverage>");
+			}
 		}
 		sb.append("</BeverageList>");
 		out.println(sb.toString());

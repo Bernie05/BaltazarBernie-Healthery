@@ -3,24 +3,18 @@ import java.math.BigDecimal;
 
 public class MyCart
 {
-	private final String CARTID;
-	private String itemCode;
 	private String customerCart;
+	private String itemCode;
 	private String itemName;
 	private BigDecimal price;
 	private BigDecimal quantity;
 
-	public MyCart(String id, String ic,String cc, String i, BigDecimal p, BigDecimal q) {
-		CARTID = id;
+	public MyCart(String ic, String cc, String i, BigDecimal p, BigDecimal q) {
 		customerCart = cc;
 		itemCode = ic;
 		itemName = i;
 		price = p;
 		quantity = q;
-	}
-
-	public String getCARTID() {
-		return(CARTID);
 	}
 
 	public void setCustomerCart(String crt) {

@@ -4,28 +4,28 @@ import javax.servlet.http.*;
 import java.util.ArrayList;
 import java.lang.StringBuilder;
 
-public class ProductServlet extends HttpServlet
+public class AllProductServlet extends HttpServlet
 {
 	HealtheryDatabaseManager hdm;
-	ProductCollection bc;
+	ItemCollection ic;
 
 	public void init() throws ServletException {
 		hdm = HealtheryDatabaseManager.instance();
-		bc = hdm.getMyProductCollection();
+		ic = ItemCollection.instance();
 	}
 
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws
 	ServletException, IOException {
 		res.setContentType("text/xml");
 		PrintWriter out = res.getWriter();
-		ProductDisplay(out);
+			AllProduct(out);
 	}
 
-	public void ProductDisplay(PrintWriter out) {
+	public void AllProduct(PrintWriter out) {
 		StringBuilder sb = new StringBuilder("");
-		sb.append("<ProductList>");
-		for(Product b : bc.getAllProducts()) {
-			sb.append("<Food>");
+		sb.append("<AllItems>");
+		for(Items b : ic.getAllItems()) {
+			sb.append("<Item>");
 			sb.append("<ItemCode>" + b.getItemCode() + "</ItemCode>");
 			sb.append("<Picture>" + b.getPicture() + "</Picture>");
 			sb.append("<Name>" + b.getName() + "</Name>");
@@ -33,17 +33,15 @@ public class ProductServlet extends HttpServlet
 			sb.append("<Description>" + b.getDescription() + "</Description>");
 			sb.append("<HealthBenefits>" + b.getHealthBenefits() + "</HealthBenefits>");
 			sb.append("<Price>" + b.getPrice() + "</Price>");
-			sb.append("<OrderCustomerID>" + b.getOrderCustomerID() + "</OrderCustomerID>");
-			sb.append("<DeliverID>" + b.getDeliverID() + "</DeliverID>");
 			sb.append("<Type>" + b.getType() + "</Type>");
-			sb.append("</Food>");
+			sb.append("</Item>");
 		}
-		sb.append("</ProductList>");
+		sb.append("</AllItems>");
 		out.println(sb.toString());
 	}
 
 	public void destroy() {
 		hdm = null;
-		bc = null;
+		ic = null;
 	}
 }

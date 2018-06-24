@@ -9,8 +9,6 @@ public class Items
 	private String description;
 	private BigDecimal price;
 	private String healthbenefits;
-	private int OrderCustomerID;
-	private int deliverID;
 	private String type;
 
 	public void setItemCode(String ic) {
@@ -69,22 +67,6 @@ public class Items
 		return(price);
 	}
 
-	public void setOrderCustomerID(int ocd) {
-		OrderCustomerID = ocd;
-	}
-
-	public int getOrderCustomerID() {
-		return(OrderCustomerID);
-	}
-
-	public void setDeliverID(int did) {
-		deliverID = did;
-	}
-
-	public int getDeliverID() {
-		return(deliverID);
-	}
-
 	public void setType(String typ) {
 		type = typ;
 	}
@@ -94,7 +76,7 @@ public class Items
 	}
 
 	public String toString() {
-		String str = "\n Item Code:" + itemCode + "\nPicture: " + picture + " \nName: " + name + "\nDescription " + description +"\nDescription: " + "\nPrice: " + price + "\nHealth Benefits: " + healthbenefits + "\nOrder ID: " + OrderCustomerID + "\nAssign to: " + deliverID;
+		String str = "\n Item Code:" + itemCode + "\nPicture: " + picture + " \nName: " + name + "\nDescription " + description +"\nDescription: " + "\nPrice: " + price + "\nHealth Benefits: " + healthbenefits ;
 		return(str);
 	}
 }

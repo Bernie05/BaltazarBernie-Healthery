@@ -44,8 +44,9 @@ class HealtheryDatabase
 				sb.append("\nFullname: " + rs.getString("fullname"));
 				sb.append("\nAddress: P" + rs.getString("address"));
 				sb.append("\nBirthday: " + rs.getString("birthday"));
+				sb.append("\nGender: " + rs.getString("gender"));
 				sb.append("\nContact: " + rs.getString("contact"));
-				sb.append("\nOrder: " + rs.getString("myCart") + "\n");
+				sb.append("\nStatus: " + rs.getString("status") + "\n");
 			}
 		}
 		catch(Exception e) {
@@ -70,12 +71,13 @@ class HealtheryDatabase
 		ResultSet rs = null;
 		try {
 			stmt = conn.createStatement();
-			rs = stmt.executeQuery("SELECT * FROM tblProductOrder;");
+			rs = stmt.executeQuery("SELECT * FROM tblItems;");
 			while(rs.next()) {
-				sb.append("\nProduct Name: " + rs.getString("itemName"));
-				sb.append("\nDescription :" + rs.getString("itemDescription"));
-				sb.append("\nPrice: P" + rs.getString("itemPrice"));
-				sb.append("\nHealth Benefits: " + rs.getString("itemHealthbenefits"));
+				sb.append("\nCode: " + rs.getString("code"));
+				sb.append("\nProduct Name: " + rs.getString("name"));
+				sb.append("\nDescription: " + rs.getString("description"));
+				sb.append("\nPrice: P" + rs.getString("price"));
+				sb.append("\nHealth Benefits: " + rs.getString("healthbenefits") + "\n");
 			}
 		}
 		catch(Exception e) {
@@ -98,14 +100,14 @@ class HealtheryDatabase
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		try {
-			String checking = "Select username, password From tblCustomers where username = ? and password = ?";
+			String checking = "Select username, password, status From tblCustomers where username = ? and password = ? and status = 'active'";
 			stmt = conn.prepareStatement(checking);
 			stmt.setString(1, user);
 			stmt.setString(2, pass);
 			rs = stmt.executeQuery();
 			while(rs.next()) {
 				return(true);
-			}	
+			}
 		}
 		catch(Exception e) {}
 		finally {
@@ -120,11 +122,11 @@ class HealtheryDatabase
 		}
 		return(false);
 	}
-	
+
 	public boolean deleteAccount(Connection conn, String user, String pass) {
 		PreparedStatement stmt = null;
 		try {
-			String deleteAccount = "Delete from tblCustomers where username = ? and password = ?";
+			String deleteAccount = "Update tblCustomers set status ='deactive' where username = ? and password = ?";
 			stmt = conn.prepareStatement(deleteAccount);
 			stmt.setString(1, user);
 			stmt.setString(2, pass);
@@ -139,17 +141,14 @@ class HealtheryDatabase
 				if(stmt!=null) {stmt.close();}
 			}
 			catch(Exception e) {}
-			try{
-				if(rs!=null) {rs.close();}
-			}
-			catch(Exception e) {}
 		}
 		return(false);
 	}
 
 	public boolean addAccount(Connection conn,String id, String pic, String user, String pass,String name, String add, String bday, String gen, String cont) {
+		PreparedStatement stmt = null;
 		try {
-			PreparedStatement stmt = conn.prepareStatement("Insert into tblCustomers(customerID, picture, username, password, fullname, address, birthday, gender, contact) values (?, ?, ?, ?, ?, ?, ?, ?, ?);");
+			stmt = conn.prepareStatement("Insert into tblCustomers(customerID, picture, username, password, fullname, address, birthday, gender, contact, status) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
 			stmt.setString(1, id);
 			stmt.setString(2, pic);
 			stmt.setString(3, user);
@@ -159,6 +158,7 @@ class HealtheryDatabase
 			stmt.setString(7, bday);
 			stmt.setString(8, gen);
 			stmt.setString(9, cont);
+			stmt.setString(10, "active");
 			stmt.executeUpdate();
 			return(true);
 		}
@@ -168,22 +168,22 @@ class HealtheryDatabase
 				if(stmt!=null) {stmt.close();}
 			}
 			catch(Exception e) {}
-			try{
-				if(rs!=null) {rs.close();}
-			}
-			catch(Exception e) {}
 		}
 		return(false);
 	}
 
-	public boolean addItem(Connection conn,String pic, String name, String description, String price, String health) {
+	public boolean addItem(Connection conn, String prod, String code, String pic, String n, String qty, String desc, String pr , String health, String type) {
 		try {
-			PreparedStatement stmt = conn.prepareStatement("Insert Into tblProductOrder (itemPicture, itemName, itemDescription, itemPrice, itemHealthbenefits) values (?, ?, ?, ?, ?);");
-			stmt.setString(1, pic);
-			stmt.setString(2, name);
-			stmt.setString(3, description);
-			stmt.setString(4, price);
-			stmt.setString(5, health);
+			PreparedStatement stmt = conn.prepareStatement("Insert Into tblItems (productID, code, picture, name, quantity, description, price, healthbenefits, type) values (?, ?, ?, ?, ?, ?, ?, ?, ?);");
+			stmt.setString(1, prod);
+			stmt.setString(2, code);
+			stmt.setString(3, pic);
+			stmt.setString(4, n);
+			stmt.setString(5, qty);
+			stmt.setString(6, desc);
+			stmt.setString(7, pr);
+			stmt.setString(8, health);
+			stmt.setString(9, type);
 			stmt.executeUpdate();
 		}
 		catch(Exception e) {

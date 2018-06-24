@@ -2,10 +2,10 @@
 
 public class Beverage extends Items
 {
-	private final String PRODUCTID;
+	private final String BEVERAGEID;
 
-	public Beverage(String id, String ic, String pic, String n, int q, String d, BigDecimal p, String h, int ocd, int did, String typ) {
-		PRODUCTID = id;
+	public Beverage(String id, String ic, String pic, String n, int q, String d, BigDecimal p, String h, String typ) {
+		BEVERAGEID = id;
 		setItemCode(ic);
 		setPicture(pic);
 		setName(n);
@@ -13,18 +13,16 @@ public class Beverage extends Items
 		setDescription(d);
 		setPrice(p);
 		setHealthBenefits(h);
-		setOrderCustomerID(ocd);
-		setDeliverID(did);
 		setType(typ);
 	}
 
 	public String getItemID() {
-		return(PRODUCTID);
+		return(BEVERAGEID);
 	}
 
 	@Override
 	public String toString() {
-		String str = "\nProduct ID: " + PRODUCTID + super.toString();
+		String str = "\nProduct ID: " + BEVERAGEID + super.toString();
 		return(str);
 	}
 }

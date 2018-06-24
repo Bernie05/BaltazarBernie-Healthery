@@ -74,7 +74,7 @@ public class MyCartCollection
 	}
 
 	public boolean searchID(MyCart a, String cart) {
-		String myID = a.getCARTID();
+		String myID = a.getCustomerCart();
 		if(myID.contains(cart)) {
 			return(true);
 		}

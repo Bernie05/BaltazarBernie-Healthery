@@ -40,7 +40,6 @@ header {
 	padding:20px 15px 15px 10px;
 }
 .headerButton li {
-
 	font-family:verdana, tahoma, sans-serif;
 	margin:7px;
 	list-style:none;
@@ -116,3 +115,4 @@ change a:hover {
 	.clear {
 		clear:both;
 	}
+
